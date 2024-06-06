@@ -1,6 +1,7 @@
 import { cn } from "../../lib/cn";
 
-const TextInput = ({
+const SelectInput = ({
+   children,
    label,
    labelPosition = "topStart",
    placeholder = "",
@@ -23,22 +24,18 @@ const TextInput = ({
    ) : (
       <>{label}</>
    );
-
    return (
-      <label className={cn("form-control w-full", className)}>
+      <label className={cn("form-control", className)}>
          {labelTop && (
             <div className="label *:font-semibold">
                {labelTopStart && <span className="label-text">{label}</span>}
                {labelTopEnd && <span className="label-text-alt">{label}</span>}
             </div>
          )}
-         <input
-            {...rest}
-            type="text"
-            placeholder={placeholder}
-            className="peer input input-bordered w-full"
-            required={required}
-         />
+         <select className="select select-bordered" {...rest}>
+            <option value="">Pick one</option>
+            {children}
+         </select>
          {labelBottom && (
             <div className="label *:font-semibold">
                {labelBottomStart && (
@@ -53,4 +50,4 @@ const TextInput = ({
    );
 };
 
-export default TextInput;
+export default SelectInput;

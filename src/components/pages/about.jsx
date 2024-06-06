@@ -1,12 +1,12 @@
 import { routesTitles } from "../../routes";
 import PageTitle from "../common/pageTitle";
 
-const Home = () => {
+const About = () => {
    return (
       <section>
-         <PageTitle title={routesTitles.home} />
+         <PageTitle title={routesTitles.about} />
       </section>
    );
 };
 
-export default Home;
+export default About;
