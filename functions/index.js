@@ -11,7 +11,7 @@ app.use(cors);
 app.use(cookieParser);
 
 // create order by given collaction
-app.post("/", (req, res) => {
+app.get("/", (req, res) => {
   return res.status(200).send({ status: "Success" });
 });
 
