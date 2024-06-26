@@ -7,6 +7,15 @@ export const texts = {
       about: "אודות",
       contact: "צור קשר",
       join: "הצטרפות",
+      admin: "אדמין",
+      login: "התחברות",
+      notFound: "עמוד לא קיים",
+   },
+   login: {
+      userName: "שם משתמש",
+      password: "סיסמא",
+      login: "התחברות",
+      serverError: "משתמש או סיסמא לא נכונים",
    },
 
    activities: {

@@ -3,6 +3,7 @@ import { cn } from "../../lib/cn";
 const TextInput = ({
    label,
    labelPosition = "topStart",
+   type = "text",
    placeholder = "",
    className = "",
    required = false,
@@ -34,7 +35,7 @@ const TextInput = ({
          )}
          <input
             {...rest}
-            type="text"
+            type={type}
             placeholder={placeholder}
             className="peer input input-bordered w-full"
             required={required}
