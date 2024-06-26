@@ -1,10 +1,10 @@
 import { useFormik } from "formik";
-import { routes, routesTitles } from "../../routes";
 import PageTitle from "../common/pageTitle";
 import TextInput from "../common/textInput";
 import SelectInput from "../common/selectInput";
 import { joinFormSchema } from "../../lib/yupSchemas";
 import InputError from "../common/inputError";
+import { routesTitles } from "../../lib/texts";
 
 const Join = () => {
    const formik = useFormik({

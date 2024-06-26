@@ -1,4 +1,4 @@
-import { routesTitles } from "../../routes";
+import { routesTitles } from "../../lib/texts";
 import PageTitle from "../common/pageTitle";
 
 const About = () => {

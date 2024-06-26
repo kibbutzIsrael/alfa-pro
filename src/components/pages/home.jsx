@@ -1,6 +1,5 @@
-import { routesTitles } from "../../routes";
 import PageTitle from "../common/pageTitle";
-import hero from ""
+import { routesTitles } from "../../lib/texts";
 
 const Home = () => {
    return (
