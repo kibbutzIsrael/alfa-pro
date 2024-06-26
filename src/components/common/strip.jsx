@@ -3,7 +3,7 @@ import strip from "../../images/Strip.jpg";
 const Strip = () => {
    return (
       <div
-         className="h-[100px] md:h-[140px] w-screen overflow-hidden"
+         className="h-[100px] md:h-[140px] w-full overflow-hidden"
          style={{
             backgroundImage: `url(${strip})`,
             backgroundPosition: "center top",

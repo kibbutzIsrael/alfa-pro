@@ -1,6 +1,8 @@
 import About from "./components/pages/about";
+import Admin from "./components/pages/admin";
 import Contact from "./components/pages/contact";
 import Home from "./components/pages/home";
+import Interested from "./components/pages/interested";
 import Join from "./components/pages/join";
 import Login from "./components/pages/login";
 import { texts } from "./lib/texts";
@@ -24,16 +26,21 @@ export const adminRoutes = {
    main: {
       title: texts.routesTitles.admin,
       path: "/admin",
-      element: <div>admin</div>,
+      element: <Admin />,
    },
    login: {
       title: texts.routesTitles.login,
       path: "/admin/login",
       element: <Login />,
    },
+   interested: {
+      title: texts.routesTitles.interested,
+      path: "/admin/interested",
+      element: <Interested />,
+   },
    volunteers: {
       title: texts.routesTitles.volunteers,
-      path: "/admin/volunteers",
+      path: "/admin/interested",
       element: <div>volunteers</div>,
    },
 };

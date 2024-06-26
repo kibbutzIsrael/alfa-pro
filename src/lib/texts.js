@@ -8,6 +8,9 @@ export const texts = {
       contact: "צור קשר",
       join: "הצטרפות",
       admin: "אדמין",
+      volunteers: "מתנדבים",
+      interested: "מעוניינים",
+      activeVolunteers: "מתנדבים",
       login: "התחברות",
       notFound: "עמוד לא קיים",
    },
@@ -16,6 +19,25 @@ export const texts = {
       password: "סיסמא",
       login: "התחברות",
       serverError: "משתמש או סיסמא לא נכונים",
+   },
+
+   userFields: {
+      name: "שם",
+      email: "אימייל",
+      phone: "פון",
+      project: "פרויקט",
+      status: "סטטוס",
+      academicInstitution: "מוסד חינוך",
+   },
+   userObject: {
+      fullName: "שם מלא",
+      email: "מייל",
+      phoneNumber: "פון",
+      academicInstitution: "מוסד אקדמי",
+      whichProject: "פרויקט",
+      howYouHearAboutUs: "איך שמעת עלינו",
+      status: "סטטוס",
+      createdAt: "נרשם בתאריך",
    },
 
    activities: {

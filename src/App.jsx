@@ -4,15 +4,16 @@ import Navbar from "./components/navigation/navbar";
 import { adminRoutes, adminRoutesArray, notFound, routesArray } from "./routes";
 import Strip from "./components/common/strip";
 import NotFound from "./components/pages/404";
+import Providers from "./contexts/providers";
 
 function App() {
    return (
-      <>
+      <Providers>
          <header>
             <Navbar />
             <Strip />
          </header>
-         <main className="container mx-auto p-3">
+         <main className="container max-w-5xl mx-auto p-3">
             <Routes>
                {routesArray.map(({ path, element }) => (
                   <Route key={path} path={path} element={element} />
@@ -26,7 +27,7 @@ function App() {
             </Routes>
          </main>
          <footer></footer>
-      </>
+      </Providers>
    );
 }
 
