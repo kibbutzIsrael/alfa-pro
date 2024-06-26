@@ -1,10 +1,10 @@
-import { routesTitles } from "../../lib/texts";
+import { texts } from "../../lib/texts";
 import PageTitle from "../common/pageTitle";
 
 const About = () => {
    return (
       <section>
-         <PageTitle title={routesTitles.about} />
+         <PageTitle title={texts.routesTitles.about} />
       </section>
    );
 };

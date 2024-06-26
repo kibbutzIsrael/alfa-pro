@@ -6,7 +6,14 @@ export default {
    },
    plugins: [require("@tailwindcss/typography"), require("daisyui")],
    daisyui: {
-      themes: false,
-      logs: false,
+      themes: [
+         {
+            light: {
+               ...require("daisyui/src/theming/themes")["light"],
+               primary: "2650BC",
+               secondary: "#5C9EF6",
+            },
+         },
+      ],
    },
 };

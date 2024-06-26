@@ -4,7 +4,7 @@ import TextInput from "../common/textInput";
 import SelectInput from "../common/selectInput";
 import { joinFormSchema } from "../../lib/yupSchemas";
 import InputError from "../common/inputError";
-import { routesTitles } from "../../lib/texts";
+import { texts } from "../../lib/texts";
 
 const Join = () => {
    const formik = useFormik({
@@ -24,7 +24,7 @@ const Join = () => {
    });
    return (
       <section>
-         <PageTitle title={routesTitles.join} />
+         <PageTitle title={texts.routesTitles.join} />
          <form onSubmit={formik.handleSubmit}>
             <div className="grid grid-cols-2 gap-3 max-w-lg mx-auto">
                <div>
