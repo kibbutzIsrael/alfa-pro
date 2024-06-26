@@ -5,8 +5,12 @@ import SelectInput from "../common/selectInput";
 import { joinFormSchema } from "../../lib/yupSchemas";
 import InputError from "../common/inputError";
 import { texts } from "../../lib/texts";
+import { addVolunteer } from "../../lib/volunteerServices";
+import { useEffect, useState } from "react";
+import { cn } from "../../lib/cn";
 
 const Join = () => {
+   const [formResult, setFormResult] = useState(null);
    const formik = useFormik({
       validateOnMount: true,
       initialValues: {
@@ -18,10 +22,28 @@ const Join = () => {
          howYouHearAboutUs: "",
       },
       onSubmit: async (values) => {
-         console.log(values);
+         try {
+            const { data } = await addVolunteer(values);
+            setFormResult({
+               ok: true,
+               message: texts.volunteerRegistrationSuccess,
+            });
+            console.log(data);
+         } catch (error) {
+            console.log(error);
+            setFormResult({
+               ok: false,
+               message: error.response.data.message,
+            });
+         }
       },
       validationSchema: joinFormSchema,
    });
+
+   //reset alert after user types
+   useEffect(() => {
+      if (formResult) setFormResult(null);
+   }, [formik.values]);
    return (
       <section>
          <PageTitle title={texts.routesTitles.join} />
@@ -78,6 +100,22 @@ const Join = () => {
                   />
                   <InputError fieldName="howYouHearAboutUs" formik={formik} />
                </div>
+               {formResult && (
+                  <div
+                     role="alert"
+                     className={cn(
+                        "alert flex col-span-2",
+                        formResult?.ok ? "alert-success" : "alert-error"
+                     )}
+                  >
+                     {formResult?.ok ? (
+                        <i className="bi bi-check-circle text-xl"></i>
+                     ) : (
+                        <i className="bi bi-x-circle text-xl"></i>
+                     )}
+                     <span>{formResult?.message}</span>
+                  </div>
+               )}
                <button
                   type="submit"
                   disabled={!formik.isValid}

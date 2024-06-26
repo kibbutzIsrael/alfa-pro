@@ -12,8 +12,10 @@ export default {
                ...require("daisyui/src/theming/themes")["light"],
                primary: "2650BC",
                secondary: "#5C9EF6",
+               success: "#23D93F",
             },
          },
       ],
+      logs: false,
    },
 };
