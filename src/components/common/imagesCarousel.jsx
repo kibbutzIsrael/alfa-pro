@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import carouselImage1 from "../../images/homeCarousel/homeCarousel1.jpg";
 import carouselImage2 from "../../images/homeCarousel/homeCarousel2.jpg";
 import carouselImage3 from "../../images/homeCarousel/homeCarousel3.jpg";
 import carouselImage4 from "../../images/homeCarousel/homeCarousel4.jpg";
-import { useNavigate } from "react-router-dom";
+import { cn } from "../../lib/cn";
 
 const carouselImages = [
    carouselImage1,
@@ -13,61 +13,54 @@ const carouselImages = [
 ];
 
 const ImagesCarousel = () => {
-   const [imageIndex, setImageIndex] = useState(0);
-   const imageRef = useRef();
+   const [currentSlide, setCurrentSlide] = useState(0);
 
-   function nextImage() {
-      imageRef.current.classList.add("fade-in");
-      setTimeout(() => {
-         setImageIndex((imageIndex) => ++imageIndex);
-         imageRef.current.classList.remove("fade-in");
-      }, 1000);
+   useEffect(() => {
+      const interval = setInterval(() => {
+         setCurrentSlide(
+            (currentSlide) => (currentSlide + 1) % carouselImages.length
+         );
+      }, 4000);
+
+      return () => clearInterval(interval);
+   }, []);
+
+   function nextSlide() {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % carouselImages.length);
    }
-   function previousImage() {
-      setImageIndex((imageIndex) => --imageIndex);
-      imageRef.current.classList.add("fade-in");
-      setTimeout(() => {
-         imageRef.current.classList.remove("fade-in");
-      }, 1000);
+
+   function prevSlide() {
+      setCurrentSlide(
+         (prevSlide) =>
+            (prevSlide - 1 + carouselImages.length) % carouselImages.length
+      );
    }
 
    return (
-      <div className="rounded-box overflow-hidden">
-         <div
-            className="carousel w-full h-[400px]"
-            style={{
-               backgroundImage: `url(${carouselImages[imageIndex]})`,
-               backgroundSize: "cover",
-               backgroundPositionX: "center",
-            }}
-         >
+      <div className="carousel rounded-box size-full relative overflow-hidden">
+         {carouselImages.map((image, index) => (
             <div
-               // id={`image${imageIndex}`}
-               ref={imageRef}
-               className="carousel-item w-full relative "
+               key={image}
+               className={cn(
+                  "carousel-item absolute size-full transition-opacity duration-1000 ease-in-out",
+                  currentSlide === index ? "opacity-100" : "opacity-0"
+               )}
             >
                <img
-                  src={carouselImages[imageIndex]}
-                  className="w-full object-cover object-center"
+                  src={image}
+                  className="w-full object-cover"
+                  alt={`Slide ${index}`}
                />
                <div className="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 transform justify-between">
-                  <button
-                     disabled={imageIndex === carouselImages.length - 1}
-                     onClick={nextImage}
-                     className="btn btn-circle"
-                  >
+                  <button className="btn btn-circle" onClick={prevSlide}>
                      ❮
                   </button>
-                  <button
-                     disabled={imageIndex === 0}
-                     onClick={previousImage}
-                     className="btn btn-circle"
-                  >
+                  <button className="btn btn-circle" onClick={nextSlide}>
                      ❯
                   </button>
                </div>
             </div>
-         </div>
+         ))}
       </div>
    );
 };
