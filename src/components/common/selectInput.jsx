@@ -33,7 +33,7 @@ const SelectInput = ({
             </div>
          )}
          <select className="select select-bordered" {...rest}>
-            <option value="">Pick one</option>
+            <option value="">בחרו...</option>
             {children}
          </select>
          {labelBottom && (

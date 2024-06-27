@@ -1,11 +1,11 @@
 export const texts = {
    common: {
+      joinForm: "טופס הצטרפות",
       join: "הצטרפו",
    },
    routesTitles: {
       home: "בית",
       about: "אודות",
-      contact: "צור קשר",
       join: "הצטרפות",
       admin: "אדמין",
       volunteers: "מתנדבים",
@@ -27,6 +27,15 @@ export const texts = {
       password: "סיסמא",
       login: "התחברות",
       serverError: "משתמש או סיסמא לא נכונים",
+   },
+   joinTimeLine: {
+      title: "איך מתחילים להתנדב?",
+      steps: [
+         { title: 'ממלאים טופס "הצטרפות"', completed: true },
+         { title: "הרכזים שלנו יצרו איתכם קשר", completed: false },
+         { title: "מגיעים לערב הכשרה בזום", completed: false },
+         { title: "מקבלים שיבוץ ומתחילים להתנדב 😍", completed: false },
+      ],
    },
 
    userFields: {

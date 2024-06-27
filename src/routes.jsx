@@ -1,6 +1,5 @@
 import About from "./components/pages/about";
 import Admin from "./components/pages/admin";
-import Contact from "./components/pages/contact";
 import Home from "./components/pages/home";
 import Interested from "./components/pages/interested";
 import Join from "./components/pages/join";
@@ -14,11 +13,6 @@ export const routes = {
       title: texts.routesTitles.about,
       path: "/about",
       element: <About />,
-   },
-   contact: {
-      title: texts.routesTitles.contact,
-      path: "/contact",
-      element: <Contact />,
    },
 };
 

@@ -20,7 +20,7 @@ const Admin = () => {
                      </div>
                   </div>
                   <span className="text-2xl text-warning">
-                     {numOfInterested}
+                     {numOfInterested ?? 10}
                   </span>
                </div>
             </Link>

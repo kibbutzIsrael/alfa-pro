@@ -8,9 +8,13 @@ import { texts } from "../../lib/texts";
 import { addVolunteer } from "../../lib/volunteerServices";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/cn";
+import TimeLine from "../common/timeLine";
 
 const Join = () => {
    const [formResult, setFormResult] = useState(null);
+
+   const { userObject: fields, activities } = texts;
+
    const formik = useFormik({
       validateOnMount: true,
       initialValues: {
@@ -47,11 +51,26 @@ const Join = () => {
    return (
       <section>
          <PageTitle title={texts.routesTitles.join} />
+         <div className="max-w-lg mx-auto">
+            <h2 className="text-lg font-semibold">
+               {texts.joinTimeLine.title}
+            </h2>
+            <TimeLine data={texts.joinTimeLine.steps} />
+            <div className="divider"></div>
+         </div>
+
          <form onSubmit={formik.handleSubmit}>
             <div className="grid grid-cols-2 gap-3 max-w-lg mx-auto">
+               <h2 className="text-lg font-semibold">
+                  {texts.common.joinForm}
+               </h2>
+
+               <p className="">
+                  <span className="text-error text-xl">*</span> - שדות חובה
+               </p>
                <div>
                   <TextInput
-                     label={"Full Name"}
+                     label={fields.fullName}
                      required
                      {...formik.getFieldProps("fullName")}
                   />
@@ -59,7 +78,7 @@ const Join = () => {
                </div>
                <div>
                   <TextInput
-                     label={"Email"}
+                     label={fields.email}
                      required
                      {...formik.getFieldProps("email")}
                   />
@@ -67,7 +86,7 @@ const Join = () => {
                </div>
                <div>
                   <TextInput
-                     label={"Phone"}
+                     label={fields.phoneNumber}
                      required
                      {...formik.getFieldProps("phoneNumber")}
                   />
@@ -76,7 +95,7 @@ const Join = () => {
 
                <div>
                   <TextInput
-                     label={"Academic Institution"}
+                     label={fields.academicInstitution}
                      {...formik.getFieldProps("academicInstitution")}
                   />
                   <InputError fieldName="academicInstitution" formik={formik} />
@@ -84,18 +103,21 @@ const Join = () => {
 
                <div>
                   <SelectInput
-                     label={"Which Project"}
+                     label={fields.whichProject}
                      {...formik.getFieldProps("whichProject")}
                   >
-                     <option value="adoptGrandpa">אמץ סבא</option>
-                     <option value="HospitalVisit">ביקור חולים</option>
+                     {Object.keys(activities).map((activity) => (
+                        <option key={activity} value={activity}>
+                           {activities[activity].title}
+                        </option>
+                     ))}
                   </SelectInput>
                   <InputError fieldName="whichProject" formik={formik} />
                </div>
 
                <div>
                   <TextInput
-                     label={"How did you hear about us?"}
+                     label={fields.howYouHearAboutUs}
                      {...formik.getFieldProps("howYouHearAboutUs")}
                   />
                   <InputError fieldName="howYouHearAboutUs" formik={formik} />
@@ -121,7 +143,7 @@ const Join = () => {
                   disabled={!formik.isValid}
                   className="btn btn-primary text-lg col-span-2"
                >
-                  Join
+                  {texts.common.join}
                </button>
             </div>
          </form>

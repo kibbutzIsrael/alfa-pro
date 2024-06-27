@@ -7,8 +7,9 @@ import { openModal } from "../../lib/modalFns";
 import InterestedDetails from "../interestedDetails";
 
 const Interested = () => {
-   const { interested, isLoading } = useInterested();
+   const { interested, isLoading, isError } = useInterested();
    const [currentInterested, setCurrentInterested] = useState(null);
+   if (isError) return <div>Error</div>;
    if (isLoading) return;
    const modalId = "interested-details";
 
