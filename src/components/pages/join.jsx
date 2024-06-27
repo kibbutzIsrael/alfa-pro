@@ -35,9 +35,13 @@ const Join = () => {
             console.log(data);
          } catch (error) {
             console.log(error);
+            const message = error.response
+               ? error.response.data.message
+               : "Server error: try again later.";
+
             setFormResult({
                ok: false,
-               message: error.response.data.message,
+               message,
             });
          }
       },
@@ -140,10 +144,14 @@ const Join = () => {
                )}
                <button
                   type="submit"
-                  disabled={!formik.isValid}
+                  disabled={!formik.isValid || formik.isSubmitting}
                   className="btn btn-primary text-lg col-span-2"
                >
-                  {texts.common.join}
+                  {formik.isSubmitting ? (
+                     <span className="loading loading-dots loading-lg" />
+                  ) : (
+                     texts.common.join
+                  )}
                </button>
             </div>
          </form>
