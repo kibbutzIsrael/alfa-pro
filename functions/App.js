@@ -9,7 +9,7 @@ const cors = require("cors")({ origin: true });
 
 //Routers
 const volunteerRoutes = require("./routes/volunteerRoutes");
-
+const userRoutes = require("./routes/userRoutes");
 //Middlewares
 app.use(helmet());
 app.use(express.json());
@@ -20,5 +20,5 @@ app.use(cookieParser);
 
 //Routes
 app.use("/volunteers", volunteerRoutes);
-
+app.use("/users", userRoutes);
 module.exports = app;
