@@ -14,6 +14,7 @@ const About = () => {
             <div className="flex flex-col">
                <img
                   src={logoLG}
+                  sizes="120px, 120px"
                   alt="log"
                   className="h-[120px] object-contain"
                />
